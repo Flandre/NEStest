@@ -34,6 +34,9 @@ require(
 			'ui': $('#emulator').JSNESUI({
 				"ACT游戏": [
 					["超级马里奥", "roms/mario.nes"]
+				],
+				"RPG游戏": [
+					["勇者斗恶龙2", "roms/DQ2.nes"]
 				]
 			})
 		});
