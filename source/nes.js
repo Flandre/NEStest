@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 var JSNES = function(opts) {
     this.opts = {
         ui: JSNES.DummyUI,
-        swfPath: 'js/lib/',
+        swfPath: 'lib/',
         
         preferredFrameRate: 60,
         fpsInterval: 500, // Time between updating FPS in ms
@@ -49,7 +49,7 @@ var JSNES = function(opts) {
     this.mmap = null; // set in loadRom()
     this.keyboard = new JSNES.Keyboard();
     
-    this.ui.updateStatus("准备加载rom");
+    this.ui.updateStatus("Ready to load a ROM.");
 };
 
 JSNES.VERSION = "<%= version %>";
@@ -88,7 +88,7 @@ JSNES.prototype = {
             }
         }
         else {
-            this.ui.updateStatus("没有加载rom或加载了无效的rom");
+            this.ui.updateStatus("There is no ROM loaded, or it is invalid.");
         }
     },
     
@@ -150,12 +150,11 @@ JSNES.prototype = {
             }
         }
         this.fpsFrameCount++;
-        this.lastFrameTime = +new Date();
     },
     
     printFps: function() {
         var now = +new Date();
-        var s = '正在运行中';
+        var s = 'Running';
         if (this.lastFpsTime) {
             s += ': '+(
                 this.fpsFrameCount / ((now - this.lastFpsTime) / 1000)
@@ -185,7 +184,7 @@ JSNES.prototype = {
             this.stop();
         }
         
-        this.ui.updateStatus("正在载入rom...");
+        this.ui.updateStatus("Loading ROM...");
         
         // Load ROM file:
         this.rom = new JSNES.ROM(this);
@@ -201,10 +200,10 @@ JSNES.prototype = {
             this.ppu.setMirroring(this.rom.getMirroringType());
             this.romData = data;
             
-            this.ui.updateStatus("载入rom成功！");
+            this.ui.updateStatus("Successfully loaded. Ready to be started.");
         }
         else {
-            this.ui.updateStatus("载入rom失败！");
+            this.ui.updateStatus("Invalid ROM!");
         }
         return this.rom.valid;
     },
