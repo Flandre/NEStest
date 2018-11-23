@@ -33,7 +33,11 @@ require(
 		var nes = new JSNES({
 			'ui': $('#emulator').JSNESUI({
 				"ACT游戏": [
-					["超级马里奥", "roms/mario.nes"]
+					["超级马里奥", "roms/mario.nes"],
+					["Clu Clu 世界", "roms/Clu.nes"],
+				],
+				"RPG游戏": [
+					["DQ2", "roms/DQ2.nes"]
 				]
 			})
 		});
